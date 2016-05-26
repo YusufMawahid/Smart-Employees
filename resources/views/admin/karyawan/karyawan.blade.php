@@ -33,17 +33,15 @@
       <div class="modal__content">
         <h1>Report by Job</h1>
         
-      <form method="POST" action="{{ url('reportjob') }}">
-          <input type="hidden" name="_token" value="{{csrf_token()}}">
-          <label>Job</label>
-          <select class="form-control" id="job" name="job_id" placeholder="Pekerjaan" required>
-                @foreach ($kar as $key => $data)
-                <option value="{{ $data->id }}">{{ $data->name }}</option>
-                @endforeach
-          </select>
-          <button type="submit" class="btn btn-primary" style="margin-top:15px;">Report</button>
-          </form>
+        <label>Job</label>
+       <select class="form-control" id="job" name="job_id" placeholder="Pekerjaan" required>
+                        @foreach ($kar as $key => $data)
+                        <option value="{{ $data->id }}">
+                        {{ $data->name }}</option>
+                      </select>
+        <a href="{{ url('reportjob/'.$data->job_id) }}" target="_blank" class="btn btn-primary" style="margin-top:15px;">Report</a>
         <br>
+                        @endforeach
         </div>
         <div class="form-group">
         <a href="" class="modal__close demo-close">
@@ -56,32 +54,37 @@
 
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
-                      <tr>
+                       <tr>
                         <th>No</th>
                         <th>Name</th>
                         <th>Job</th>
                         <th>Division</th>
                         <th>Salary</th> 
-                        <th colspan="4">Action</th>
+                        <th colspan="5">Action</th>
                       </tr>
                     </thead>
-                    @foreach ($employee as $key => $data)
+                    <?php $i = 1; ?>
+                   @foreach ($employee as $key => $data)
                     <tbody>
                       <tr>
-                      <td>{{$data->id}}</td>
-                       <td>{{$data->nama}}</td>
+                       <td><?php  echo $i; $i+=1; ?></td>
+                       <td>{{$data->nama}}</td> 
                        <?php
-                       $divisi = App\Divisi::find($data->divisi);
-                       $kar = App\Job::find($data->job_id);
-                        ?>
-                       <td>{{$kar->name}}</td>
+                       $kara = \App\Job::whereId($data->job_id)->first();
+                       $divisi = \App\Divisi::whereId($data->divisi)->first();
+                       // $divisi = \DB::table('divisis')->whereId('1')->first();
+                       
+                       ?>
+                       
+                       <td>{{$kara->name}}</td>
                        <td>{{$divisi->nama}}</td>
+                       <td>{{$data->gaji}}</td>
                        <td></td>
 <td>
     <a href="{{ url('deletekaryawan/'.$data->id) }}"><i class="fa fa-close"></i>&nbsp;&nbsp;Delete</a>
 </td>
 <td>
-    <a href="deletekaryawan/.$data->id"><i class="fa fa-edit"></i>&nbsp;&nbsp;Edit</a>
+    <a href="{{ url('karyawan/edit/'.$data->id) }}"><i class="fa fa-edit"></i>&nbsp;&nbsp;Edit</a>
 </td>
 <td>
     <a href="{{ url('detail/'.$data->id) }}"><i class="fa fa-list"></i>&nbsp;&nbsp;Detail</a>

@@ -9,6 +9,7 @@ use File;
 use Illuminate\Support\Str;
 use App;
 use Auth;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -28,12 +29,9 @@ class PegawaiController extends Controller
 
 	public function admin()
 	{
+		if (Auth::user()->roles != "admin") {
+			return redirect('home_user');
+		}
 		return view('admin.dashboard');
 	}
-	public function absenuser()
-	{
-		return view('user.absen.absen');
-	}
-	
-
 }

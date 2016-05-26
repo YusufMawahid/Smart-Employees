@@ -4,10 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class pegawai extends Model
+class Chat extends Model
 {
- public function jobs()
- 	{
-
-	}  
+    //
 }

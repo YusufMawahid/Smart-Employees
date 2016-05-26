@@ -12,9 +12,33 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'nama' => 'Yusuf Mawahid',
         	'email'=>'yusuf1@yusuf.com',
-        	'password' => bcrypt('admin123')
+        	'password' => bcrypt('admin123'),
+            'roles'  => 'admin',
+            'job_id' => '1',
+            'gaji' => 'Rp.100.000.000',
+            'divisi' => '1',
+            'uang_makan' => '100000',
+            'code_div' => '9384',
+            'umur' => '17 tahun',
+            'tgl_lahir' => '05/19/1999',
+            'jenis_kelamin' => 'Man',
+            'alamat' => 'Jalan Sumatra',
+            'no_hp' => '(081)219-947-273',
+            'norek' => '83925-91726-91823',
+            'photo' => 'gua.jpg',
+            'status' => 'Belum Menikah'
         	]);
+
+        DB::table('jobs')->insert([
+            'name' => 'Direktur',
+            'pekerjaan' => '100000000'
+            ]);
+        DB::table('divisis')->insert([
+            'nama' => 'Divisi Pemrograman',
+            'code' => '9815'
+            ]);
     }
 
 }

@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\pegawai;
+
+use App\User;
+use App\Divisi;
+use App\Job;
 use Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\Registrar;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
@@ -81,25 +87,65 @@ class AuthController extends Controller
 
     public function postLogin(Request $r)
     {
-      $username = $r->input('email');
-      $password = $r->input('password');
-      $remember = ($r->input('remember')) ? true : false;
+    $email = Input::get('email');
+    $password = Input::get('password');
 
-      if (Auth::attempt(['email' => $username, 'password' => $password],$remember)) {
-        if (Auth::viaRemember()) {
-          return redirect('admin');
+        if (Auth::attempt(['email'=>$email,'password'=>$password])) {
+            if (Auth::User()->roles=='admin') {   
+                return redirect('admin');
+            }
+
+            else if (Auth::User()->roles=='user') {
+                return redirect('home_user');
+            }
         }
-        return redirect('admin');
-      }
-
-      $msgclass = "danger";
-      $msg = "Email atau password tidak valid";
-      return redirect('login')->with('msgclass',$msgclass)->with('msg',$msg)->withInput();
+        else{
+            return 'Password salah';
+        }
     }
 
     public function getLogout()
     {
       Auth::logout();
       return redirect('home');
+    }
+
+    public function getRegister()
+    {
+        return view('login.register',['kar' => Job::paginate(100)],
+                                      ['div' => Divisi::paginate(100)]);
+    }
+
+    public function postRegister()
+    {
+        $akun = new \App\User;
+        $akun->nama = Input::get('nama');
+        $akun->job_id = Input::get('job_id');
+        $akun->gaji = Input::get('gaji');
+        $akun->divisi = Input::get('divisi');
+        $akun->code_div = Input::get('code_div');
+        $akun->tgl_lahir = Input::get('tgl_lahir');
+        $akun->jenis_kelamin = Input::get('jenis_kelamin');
+        $akun->alamat = Input::get('alamat');
+        $akun->no_hp = Input::get('no_hp');
+        $akun->norek = Input::get('norek');
+        $akun->umur = Input::get('umur');
+        $akun->status = Input::get('status');
+        $akun->uang_makan = Input::get('uang_makan');
+        $akun->roles = Input::get('roles');
+        $akun->email = Input::get('email');
+        $akun->password = bcrypt(Input::get('password'));
+
+         if(Input::hasFile('photo')){
+            $photo = date("YmdHis")
+            .uniqid()
+            ."."
+            .Input::file('photo')->getClientOriginalExtension();
+        
+            Input::file('photo')->move(storage_path(),$photo);
+            $akun->photo = $photo;
+        }      
+        $akun->save();
+        return redirect('login');
     }
 }

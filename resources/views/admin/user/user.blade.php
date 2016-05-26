@@ -1,5 +1,7 @@
 @extends('admin.home')
 @section('content')
+
+<link rel="stylesheet" type="text/css" href="/css/popup.css">
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -24,21 +26,24 @@
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
+                        <th>No</th>
                         <th>Name</th>
                         <th>Gender</th>
                         <th>Telephone</th>
                         <th>Email</th>
-                        <th colspan="3">Action</th>
+                        <th colspan="4">Action</th>
                       </tr>
                     </thead>
+                    <?php $i = 1; ?>
                     @foreach ($user as $key => $data)
                     <tbody>
                       <tr>
+                       <td><?php  echo $i; $i+=1; ?></td>
                        <td>{{$data->nama}}</td>
                        <td>{{$data->jenis_kelamin}}</td>
                        <td>{{$data->no_hp}}</td>
                        <td>{{$data->email}}</td>
-                       <td><a href="{{ url('deletepeker/'.$data->id)}}"><i class="fa fa-close"></i>  Delete</a></td>
+                       <td><a href="{{ url('deleteuser/'.$data->id)}}"><i class="fa fa-close"></i>  Delete</a></td>
                        <td><a href="{{ url('deletepeker/'.$data->id)}}"><i class="fa fa-edit"></i>  Edit</a></td>
                        <td><a href="{{ url('detail/'.$data->id)}}"><i class="fa fa-list"></i>  Detail</a></td>
 

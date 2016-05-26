@@ -24,14 +24,18 @@
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
+                        <th>No</th>
                         <th>Division</th>
                         <th>Code</th>
                         <th>Action</th>
                       </tr>
                     </thead>
+                    
+                    <?php $i = 1; ?>
                     @foreach ($divisi as $key => $data)
                     <tbody>
                       <tr>
+                      <td><?php  echo $i; $i+=1; ?></td>
                        <td>{{$data->nama}}</td>
                        <td>{{$data->code}}</td>
                        <td><a href="{{ url('deletediv/'.$data->id) }}"><button class="btn btn-block btn-primary" style="width: 100px;">Delete</button></a></td>

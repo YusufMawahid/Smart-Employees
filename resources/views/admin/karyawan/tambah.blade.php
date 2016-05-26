@@ -18,8 +18,8 @@
               <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Add Employee</h3>
-                </div><!-- /.box-header -->
-                <!-- form start -->
+                </div>
+
                 <form action="postkaryawan" method="POST" role="form" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                   <div class="box-body">
@@ -93,6 +93,35 @@
                       <option selected="selected"></option>
                       <option value="Man" >Man</option>
                       <option value="Woman">Woman</option>
+                      <input id="username" name="roles" type="hidden" class="validate" required="required" value="user">
+                    </select>
+                  </div><!-- /.form-group -->
+
+                  <div class="form-group">
+                    <label>Age</label>
+                    <select name="umur" class="form-control select2" style="width: 100%;" required>
+                      <option selected="selected"></option>
+                      <option value="19 tahun">19 tahun</option>
+                      <option value="20 tahun">20 tahun</option>
+                      <option value="21 tahun">21 tahun</option>
+                      <option value="22 tahun">22 tahun</option>
+                      <option value="23 tahun">23 tahun</option>
+                      <option value="24 tahun">24 tahun</option>
+                      <option value="25 tahun">25 tahun</option>
+                      <option value="26 tahun">26 tahun</option>
+                      <option value="27 tahun">27 tahun</option>
+                      <option value="28 tahun">28 tahun</option>
+                      <option value="29 tahun">29 tahun</option>
+                      <option value="30 tahun">30 tahun</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Status</label>
+                    <select name="status" class="form-control select2" style="width: 100%;" required>
+                      <option selected="selected"></option>
+                      <option value="Sudah Menikah" >Sudah Menikah</option>
+                      <option value="Belum Menikah">Belum Menikah</option>
                     </select>
                   </div><!-- /.form-group -->
 

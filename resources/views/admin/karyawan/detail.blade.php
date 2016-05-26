@@ -1,21 +1,15 @@
 @extends('admin.home')
 @section('content')
-
+<style>
+.imgs {
+    max-width:100%;
+    height: auto;
+  }
+</style>
       <div class="content-wrapper">
       
-<br>
         <section class="content-header">
 
-<div class="col-md-6" style="width:45%">
-            <div class="box box-solid" style=" margin-left: 590px;position: absolute;">
-              <div class="box-header with-border">
-                  <h3 class="box-title">Image of {{ $detail->nama }}</h3>
-                </div>
-                <div class="box-body">
-<img src="/images/{{ $detail->photo }}" style="width: 450px;height: 350px;"> 
-                </div>
-</div>
-            </div>
 <div class="row">
       <div class="col-md-6">
               <div class="box box-solid">
@@ -71,6 +65,17 @@
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- ./col -->
+            <div class="col-md-5">
+            <div class="box box-solid" >
+              <div class="box-header with-border">
+                  <h3 class="box-title">Image of {{ $detail->nama }}</h3>
+                </div>
+                <div class="box-body">
+                    <img src="/images/{{ $detail->photo }}" class="imgs">
+                </div>
+              </div>
+            </div>
+            
         </div>
     </section>
 </div>

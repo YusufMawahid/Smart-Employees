@@ -23,12 +23,24 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index_user()
+    {
+         if (Auth::check()) {
+            return redirect('home_user');
+        }
+        return view('welcome');
+    }
+    
     public function index()
     {
         if (Auth::check()) {
             return redirect('admin');
         }
         return view('welcome');
-        
+    }
+
+    public function errorpage()
+    {
+        return view('errors.503');
     }
 }

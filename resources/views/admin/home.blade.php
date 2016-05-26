@@ -38,26 +38,12 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <!-- User Account: style can be found in dropdown.less -->
+
               <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="/{{ url('img'.'/'.Auth::user()->photo) }}" class="user-image" alt="User Image">
-                  <span class="hidden-xs">{{ Auth::user()->email }}</span>
+                <a href="/logout" >
+                  <span class="hidden-xs">Logout</span>
                 </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="/{{ url('img'.'/'.Auth::user()->photo) }}" class="img-circle" alt="User Image">
-                    <p>
-                      {{ Auth::user()->email }}
-                    </p>
-                  </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-right">
-                      <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
+               
               </li>
               <!-- Control Sidebar Toggle Button -->
               <li>
@@ -71,7 +57,7 @@
         <section class="sidebar">
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="/{{ url('img'.'/'.Auth::user()->photo) }}" style="height: 45px; width: 50px" class="img-circle" alt="User Image">
+              <img src="{{ url('images/'.Auth::User()->photo) }}" style="height: 45px; width: 50px" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p>{{ Auth::user()->email }}</p>
@@ -110,21 +96,22 @@
                 <li><a href="/divisi"><i class="fa fa-circle-o"></i>Data</a></li>
               </ul>
             </li>
+            
+            <li>
+              <a href="#">
+                <i class="fa fa-users"></i> <span>Administrator</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="/admin/addAdmin"><i class="fa fa-circle-o"></i>Add Admin</a></li>
+                <li><a href="dataAdmin"><i class="fa fa-circle-o"></i>Data</a></li>
+              </ul>
+            </li>
 
             <li><a href="/user"><i class="fa fa-users"></i> <span>User</span></a></li>
             
-            <li><a href="#"><i class="fa fa-tasks"></i> <span>Payroll</span></a></li>
-            <li><a href="#"><i class="fa fa-users"></i> <span>Administrator</span></a></li>
-            
-        
+            <li><a href="payroll"><i class="fa fa-tasks"></i> <span>Payroll</span></a></li>
 
- <!--              <li><a href="absenuser"></a><i class="fa fa-book"><span>Absent Data</span></i></li>
-              <li><a href="divisi"></a><i class="fa fa-book"><span>Division Data</span></i></li>
-              <li><a href="pekerjaan"></a><i class="fa fa-book"><span>Job Data</span></i></li>
-              <li><a href="karyawan"></a><i class="fa fa-book"><span>Employee Data</span></i></li>
-              <li><a href="video"></a><i class="fa fa-book"><span>Video Conference</span></i></li>
-            
-  -->        </ul>
+          </ul>
         </section>
         <!-- /.sidebar -->
       </aside>
