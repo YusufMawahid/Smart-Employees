@@ -24,15 +24,16 @@
 	{
 		$.ajax({
 			url:'{{url("ajax")}}',
+			dataType:'json',
 			data:{_token:'{{csrf_token()}}'},
 			success:function(data)
 			{
-				$('.chat-box').append('<div class="alert alert-info">'+data['msg']+'</div>');
+				$('.chat-box').append('<div class="alert alert-info">'+data.msg+'</div>');
 				setTimeout(liveChat,1000);
 			},
 			error:function()
 			{
-				setTimeout(liveChat,5000);
+				setTimeout(liveChat,1000);
 			}
 		});
 	}

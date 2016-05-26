@@ -34,9 +34,9 @@
         <h1>Report by Job</h1>
         
         <label>Job</label>
-       <select class="form-control" id="job" name="job_id" placeholder="Pekerjaan" required>
                         @foreach ($kar as $key => $data)
-                        <option value="{{ $data->id }}">
+              <select class="form-control" id="job" name="job_id" placeholder="Pekerjaan" required>
+                        <option value="{{ $data->name }}">
                         {{ $data->name }}</option>
                       </select>
         <a href="{{ url('reportjob/'.$data->job_id) }}" target="_blank" class="btn btn-primary" style="margin-top:15px;">Report</a>
@@ -72,10 +72,7 @@
                        <?php
                        $kara = \App\Job::whereId($data->job_id)->first();
                        $divisi = \App\Divisi::whereId($data->divisi)->first();
-                       // $divisi = \DB::table('divisis')->whereId('1')->first();
-                       
                        ?>
-                       
                        <td>{{$kara->name}}</td>
                        <td>{{$divisi->nama}}</td>
                        <td>{{$data->gaji}}</td>

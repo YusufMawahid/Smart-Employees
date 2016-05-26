@@ -153,13 +153,13 @@ class AdminController extends Controller
     	// $data = \App\Job::where(['name'=>$karyawan])->first();
     	// echo "<option value=".$data->pekerjaan.">".$data->pekerjaan."</option>";
     	$gaji  = \App\Job::find($id);
-    	echo $gaji;
+    	return response()->json($gaji);
     }
 	
 	public function AjaxDivisi($id)
 	    {
 	    	$divisi  = \App\Divisi::find($id);
-    		echo $divisi;
+    		return response()->json($divisi);
 	    }    
 	public function view_adduser()
 	{
