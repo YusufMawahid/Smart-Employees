@@ -14,6 +14,7 @@ use Auth;
 use Validator;
 use App\Lembur;
 use App\Notif;
+use App\Chat;
 use LRedis;
 use PDF;
 use App\Roles;
@@ -55,7 +56,9 @@ class UserController extends Controller
 	}
 	public function view_chat()
 	{
-        return view('user.chat.chats',['message' =>  User::whereRoles('user')->paginate(10)]);
+		$chats = Chat::get();
+        return view('user.chat.index',['message' =>  User::whereRoles('user')->paginate(10)],
+        							  ['chats' => Chat::paginate(100)]);
 	}
 
 	public function payroll()

@@ -40,7 +40,7 @@
       </div>
     </div>
   </div>
-                  <h3 class="box-title">Hover Data Table</h3>
+                  <h3 class="box-title">Hover Data Table Payroll</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                    <table id="example1" class="table table-bordered table-striped">

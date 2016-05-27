@@ -60,6 +60,7 @@
                         <th>Job</th>
                         <th>Division</th>
                         <th>Salary</th> 
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <?php $i = 1; ?>
@@ -74,7 +75,11 @@
                         ?>
                        <td>{{$kar->name}}</td>
                        <td>{{$divisi->nama}}</td>
-                       <td></td>
+                       <td>{{$data->gaji}}</td>
+                       
+<td>
+    <a href="{{ url('detail/'.$data->id) }}"><i class="fa fa-list"></i>&nbsp;&nbsp;Detail</a>
+</td>
 
                      </tr>
                     </tbody>
