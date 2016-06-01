@@ -420,4 +420,6 @@ class AdminController extends Controller
             $emp->save();
             return redirect('dataAdmin');
     }
+
+    
 }

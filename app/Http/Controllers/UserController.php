@@ -29,7 +29,13 @@ class UserController extends Controller
  		if (Auth::user()->roles != "user"){
 			return redirect('admin');
 		}
- 		return view('user.home');
+
+ 	$employees = \App\User::count();
+    $payroll = \App\User::groupBy('nama')->get()->count();
+    $admin = \App\User::groupBy('roles')->get()->count();
+    $user = \App\User::groupBy('roles')->get()->count();
+
+    return view('user.home')->with('employees',$employees)->with('payroll',$payroll)->with('admin',$admin)->with('user',$user);
  	}
  	public function view_divisi()
  	{

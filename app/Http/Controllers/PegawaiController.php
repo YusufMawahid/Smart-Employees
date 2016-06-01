@@ -32,6 +32,11 @@ class PegawaiController extends Controller
 		if (Auth::user()->roles != "admin") {
 			return redirect('home_user');
 		}
-		return view('admin.dashboard');
+	$employees = \App\User::count();
+    $payroll = \App\User::groupBy('nama')->get()->count();
+    $admin = \App\User::groupBy('roles')->get()->count();
+    $user = \App\User::groupBy('roles')->get()->count();
+
+    return view('admin.dashboard')->with('employees',$employees)->with('payroll',$payroll)->with('admin',$admin)->with('user',$user);
 	}
 }

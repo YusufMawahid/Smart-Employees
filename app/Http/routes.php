@@ -14,12 +14,12 @@
 	Route::get('home','PegawaiController@home');
 
 	Route::get('admin','PegawaiController@admin');
-	
+
 	Route::get('/', 'HomeController@index');
 	Route::get('index', 'HomeController@index_user');
-	
+
 	Route::get('login','Auth\AuthController@getLogin');
-	
+
 	Route::post('login','Auth\AuthController@postLogin');
 
 	Route::get('home_user','UserController@dashboard');
@@ -27,7 +27,7 @@
 	Route::get('register','Auth\AuthController@getRegister');
 
 	Route::post('register','Auth\AuthController@postRegister');
-	
+
 	Route::get('logout','Auth\AuthController@getLogout');
 
 
@@ -38,14 +38,10 @@
 	Route::get('user/video','UserController@video');
 	Route::get('payroll_user','UserController@payroll');
 
-	Route::group(['middleware' => ['web']], function() {
-		Route::get('test','ChatController@index');
-		Route::post('test/add','ChatController@store');
-		Route::get('ajax','ChatController@ajax');
-		
-	});
-	Route::get('user/message','UserController@view_chat');
-	Route::get('user/messages/{id}','UserController@chats');
+	Route::get('messages','ChatController@index');
+	Route::post('messages','ChatController@sendMessage');
+	Route::get('messages/{id}','ChatController@userMessage');
+	Route::get('api/messages/{id}','ChatController@reloadMessage');
 
 	/*END USER*/
 
@@ -54,6 +50,8 @@
 	/*THE END*/
 
 	/*ADMIN*/
+
+	Route::get('dashboard','AdminController@dashboard');
 
 
 	Route::get('tambahkerja','AdminController@view_tambahkerja');
@@ -93,7 +91,7 @@
 	Route::get('admin/detail/{id}','AdminController@detail_admin');
 	Route::get('admin/edit/{id}','AdminController@view_edit_admin');
 	Route::post('adminpostedit/{id}','AdminController@post_edit_admin');
-	
+
 
 
 	Route::get('payroll','AdminController@payroll');
@@ -111,7 +109,7 @@
 
     return $response;
 });
-	
+
 	/*Route::get('pdf',function() {
 		$pdf = PDF::loadView('admin.pekerjaan.reportjob');
 		return $pdf->download('invoice.pdf');
