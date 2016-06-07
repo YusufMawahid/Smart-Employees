@@ -43,10 +43,15 @@
                        <td>{{$data->jenis_kelamin}}</td>
                        <td>{{$data->no_hp}}</td>
                        <td>{{$data->email}}</td>
-                       <td><a href="{{ url('deleteuser/'.$data->id)}}"><i class="fa fa-close"></i>  Delete</a></td>
-                       <td><a href="{{ url('deletepeker/'.$data->id)}}"><i class="fa fa-edit"></i>  Edit</a></td>
-                       <td><a href="{{ url('detail/'.$data->id)}}"><i class="fa fa-list"></i>  Detail</a></td>
-
+                       <td>
+    <a href="{{ url('deletekaryawan/'.$data->id) }}"><i class="fa fa-close"></i>&nbsp;&nbsp;Delete</a>
+</td>
+<td>
+    <a href="{{ url('karyawan/edit/'.$data->id) }}"><i class="fa fa-edit"></i>&nbsp;&nbsp;Edit</a>
+</td>
+<td>
+    <a href="{{ url('detail/'.$data->id) }}"><i class="fa fa-list"></i>&nbsp;&nbsp;Detail</a>
+</td>
                      </tr>
                     </tbody>
                     @endforeach

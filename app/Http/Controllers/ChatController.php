@@ -17,6 +17,8 @@ class ChatController extends Controller
 			$users = User::where('id','<>',auth()->user()->id)->get();
 			return view('user.chat.index',['users'=>$users]);
 	}
+	
+	
 
 	public function userMessage($id)
 	{
@@ -37,6 +39,8 @@ class ChatController extends Controller
 			return view('user.chat.show',['users'=>$users,'user_login'=>$user_login,'user'=>$user,'messages'=>$messages]);
 	}
 
+	
+
 	public function sendMessage(Request $r)
 	{
 			$user_id = $r->input('user_id');
@@ -54,6 +58,8 @@ class ChatController extends Controller
 
 			return response()->json(compact('success'));
 	}
+
+	
 
 	public function reloadMessage($id)
 	{
@@ -98,6 +104,5 @@ class ChatController extends Controller
 			}
 		}
 
-		// return response()->json(compact('messages'));
 	}
 }

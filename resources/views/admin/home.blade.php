@@ -111,6 +111,7 @@
             
             <li><a href="payroll"><i class="fa fa-tasks"></i> <span>Payroll</span></a></li>
 
+
           </ul>
         </section>
         <!-- /.sidebar -->

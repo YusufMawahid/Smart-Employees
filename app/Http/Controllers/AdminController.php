@@ -40,8 +40,6 @@ class AdminController extends Controller
 	public function view_kerja()
 	{
 		return view('admin.pekerjaan.pekerjaan',['job' => Job::paginate(5)]);
-        
-
 	}
 
 	public function add_tambahkerja(Request $request)
@@ -136,16 +134,6 @@ class AdminController extends Controller
     {
         return view('admin.karyawan.karyawan',['employee' => User::paginate(10)],
                                               ['kar' => Job::paginate(10)]);
-
-        // $employee = User::paginate(10);
-
-        // foreach ($employee as $key => $data) {
-        //     $divisi = \App\Divisi::whereId($data->divisi)->first();
-        //     $kara = \App\Job::whereId($data->job_id)->first();
-
-        //     echo $divisi->nama;
-        // }
-        // // dd($employee);
     }
 
     public function AjaxPekerjaan($id)
@@ -219,12 +207,26 @@ class AdminController extends Controller
         return view('admin.karyawan.detail',['detail' =>  User::find($id)]);
     }
 
-    public function view_reportjob()
+    public function view_reportjob($id)
     {   
+        // echo $id;
+        $user = User::whereJobId($id)->get();
+        foreach ($user as $key => $value) {
+            echo $value->nama.'<br>';
+        }
+    // mengarahkan view pada file pdf.blade.php di views/provinsi/
+    /*$view = View::make('pekerjaan.reportjob', array('user' => $user, 'i' => 0))->render(); 
+    // panggil fungsi dompdf
+    $pdf = App::make('dompdf');
+    // set ukuran kertas dan orientasi
+    $pdf->loadHTML($view)->setPaper('a4')->setOrientation('potrait');
+    // cetak
+    return $pdf->stream();*/
+        /*
         $User = User::find(Input::get('job_id'));
         $job = array('job'=> Job::where('name', '=',$User));
         $pdf = PDF::loadView('admin.pekerjaan.reportjob');
-        return $User;
+        return $User;*/
         // return view('admin.pekerjaan.reportjob')->with($job);
         // return $pdf->stream('data.pdf');
         /*$data['data'] = User::where('job_id',Input::get('job_id'))->get();*/

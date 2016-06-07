@@ -34,14 +34,20 @@
         <h1>Report by Job</h1>
         
         <label>Job</label>
+              <select class="form-control" id="job" name="job_id" placeholder="Pekerjaan" onchange="editLink()" required>
                         @foreach ($kar as $key => $data)
-              <select class="form-control" id="job" name="job_id" placeholder="Pekerjaan" required>
-                        <option value="{{ $data->name }}">
+                        <option value="{{ $data->id }}">
                         {{ $data->name }}</option>
-                      </select>
-        <a href="{{ url('reportjob/'.$data->job_id) }}" target="_blank" class="btn btn-primary" style="margin-top:15px;">Report</a>
-        <br>
                         @endforeach
+                      </select>
+        <a href="{{ url('reportjob/{id}') }}" target="_blank" class="btn btn-primary" style="margin-top:15px;" id="linkReport">Report</a>
+
+        <script type="text/javascript">
+          function editLink() {
+            $('#linkReport').attr('href', '{{ url("reportjob") }}' + '/' + $('#job').val());
+          };
+        </script>
+        <br>
         </div>
         <div class="form-group">
         <a href="" class="modal__close demo-close">

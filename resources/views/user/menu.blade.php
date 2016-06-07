@@ -93,7 +93,7 @@
             <li><a href="divisi_user"><i class="fa fa-book"></i><span>Division Data</span></a></li>
             <li><a href="pekerjaan_user"><i class="fa fa-dashboard"></i><span>Job Data</span></a></li>
             <li><a href="payroll_user"><i class="fa fa-tasks"></i><span>Payroll Data</span></a></li>
-            <li><a href="{{ url('messages') }}"><i class="fa fa-wechat"></i><span>Chat</span></a></li>
+            <li><a href="{{ url('messages') }}"><i class="fa fa-wechat"></i><span>Messages</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->

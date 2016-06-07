@@ -1,4 +1,4 @@
-@extends('user.menu')
+@extends('admin.home')
 @section('content')
 
 <script type="text/javascript">
@@ -9,7 +9,7 @@
     dm.scrollTop = dm.scrollHeight;
 
     function reloadMessage() {
-      $('.direct-chat-messages').load('{{ url('api/messages'.'/'.$user->id) }}');
+      $('.direct-chat-messages').load('{{ url('api/message'.'/'.$admin->id) }}');
     }
 
     setInterval(reloadMessage,500);
@@ -22,7 +22,7 @@
 
       else {
         $.ajax({
-          url: '{{ url('messages') }}',
+          url: '{{ url('message') }}',
           type: 'post',
           data: $(this).serializeArray(),
           success:function(data){
@@ -48,7 +48,7 @@
             <div class="col-md-8">
               <div class="box box-primary direct-chat direct-chat-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">{{ $user->nama }}</h3>
+                  <h3 class="box-title">{{ $admin->nama }}</h3>
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -90,8 +90,8 @@
                 </div><!-- /.box-body -->
                 <div class="box-footer">
                   <form id="create_form">
-                    <input type="hidden" name="user_id" value="{{ $user_login->id }}">
-                    <input type="hidden" name="receiver_id" value="{{ $user->id }}">
+                    <input type="hidden" name="user_id" value="{{ $admin_login->id }}">
+                    <input type="hidden" name="receiver_id" value="{{ $admin->id }}">
                     <div class="input-group">
                       <input type="text" name="msg" placeholder="Type Message ..." class="form-control" id="msg">
                       <span class="input-group-btn">
@@ -114,11 +114,11 @@
                 </div>
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
-										@foreach($users as $user)
-										<li><a href="{{ url('messages'.'/'.$user->id) }}">{{ $user->nama }}</a></li>
+										@foreach($admins as $user)
+										<li><a href="{{ url('message'.'/'.$admin->id) }}">{{ $user->nama }}</a></li>
 										@endforeach
                   </ul>
-                </div><!-- /.box-body -->
+                </div><!-- /.box-body --> 
               </div><!-- /. box -->
 
               <div class="box box-solid" style="margin-top:17px;">

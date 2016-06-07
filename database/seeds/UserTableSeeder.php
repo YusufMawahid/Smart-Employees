@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'nama' => 'Yusuf Mawahid',
-        	'email'=>'yusuf1@yusuf.com',
+        	'email'=>'admin@gmail.com',
         	'password' => bcrypt('admin123'),
             'roles'  => 'admin',
             'job_id' => '1',
@@ -27,7 +27,7 @@ class UserTableSeeder extends Seeder
             'alamat' => 'Jalan Sumatra',
             'no_hp' => '(081)219-947-273',
             'norek' => '83925-91726-91823',
-            'photo' => 'gua.jpg',
+            'photo' => '20160517135918573b23b65fc8e.jpg',
             'status' => 'Belum Menikah'
         	]);
 
